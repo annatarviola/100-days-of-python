@@ -27,31 +27,21 @@ scissors = '''
 ---.__(___)
 '''
 
+game_images = [rock, paper, scissors]
+
 print('What do you choose? Type 0 for Rock, 1 for Paper, or 2 for Scissors.')
 
 while True:
     player_num = int(input('> '))
-    if player_num == 0:
-        player = rock
-        break
-    elif player_num == 1:
-        player = paper
-        break
-    elif player_num == 2:
-        player = scissors
-        break
-    else:
+    if player_num < 0 or player_num > 2:
         print("Please enter a value between 0 and 2 and try again.")
+    else:
+        player = game_images[player_num]
+        break
          
 
-rand_num = random.randint(0,2)
+computer = game_images[random.randint(0,2)]
 
-if rand_num == 0:
-    computer = rock
-elif rand_num == 1:
-    computer = paper
-else:
-    computer = scissors
 
 print(f"Your opponent played: {computer}")
 print(f"You played: {player}")
@@ -60,7 +50,7 @@ print("")
 print("")
 
 
-if (player == rock and computer == rock) or (player == scissors and computer == scissors) or (player == paper and computer == paper):
+if computer == player:
     print("It was a tie!")
 elif player == rock and computer == paper:
     print("You lose!")
